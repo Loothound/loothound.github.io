@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loothound</title>
+    <link rel="stylesheet" href="animate.css">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #111214;
+            color: #f1ffff;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+               Roboto, Oxygen-Sans, Ubuntu, Cantarell,
+               "Helvetica Neue", sans-serif;
+        }
+
+        #logo {
+            width: auto;
+            height: 15vh;
+            background-color: #ec3c3c;
+            border-color: #ec3c3c;
+            border-style: solid;
+            border-radius: 100%;
+            border-width: 2px;
+        }
+
+        #container {
+            display: flex;
+            flex-direction: column;
+            margin-top: 10vh;
+            align-items: center;
+        }
+
+        #container section {
+            background-color: #1a1b1e;
+            border-color: #373a40;
+            border-style: solid;
+            border-width: 1px;
+            border-radius: 10px;
+            padding: 5px;
+            margin-top: 10px;
+            width: fit-content;
+            max-width: 600px;
+            text-align: justify;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 24pt;
+        }
+
+        h2 {
+            margin: 0;
+            font-size: 18pt;
+        }
+
+        p {
+            margin: 0;
+            margin-top: 5px;
+        }
+
+        a, a:visited {
+            color: #ec3c3c;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #e26161;
+        }
+
+        #downloads {
+            list-style: none;
+            padding-left: 5px;
+            padding-right: 5px;
+        }
+
+        #downloads li {
+            display: inline-block;
+        }
+
+        #downloads li:not(:first-child) {
+            margin-left: 20px;
+        }
+
+        #downloads li a {
+            font-size: 16pt;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="container">
+        <img src="logo.svg" id="logo"/>
+        <section>
+            <h1>Loothound</h1>
+        </section>
+        <section>
+            <h2>About</h2>
+            <p>Loothound is a new tool for Path of Exile with the intention of replicating some of the functionality of other tools like Exilence Next and PoE Stack.
+                Currently this mainly encompasses the ability to selectively fetch all the items inside certain stash tabs of your choice and automatically checking everything
+                against <a href="https://poe.ninja">poe.ninja</a> to get an overall grasp on the combined net worth of your loot. 
+            </p>
+        </section>
+        <section>
+            <h2>Downloads</h2>
+            <ul id="downloads">
+                <li><a href="https://github.com/Loothound/Loothound/releases/download/app-v0.0.2/loothound_0.0.2_x64_en-US.msi">Windows</a></li>
+                <li><a href="https://github.com/Loothound/Loothound/releases/download/app-v0.0.2/loothound_0.0.2_amd64.AppImage">Linux (AppImage)</a></li>
+                <li><a href="https://github.com/Loothound/Loothound/releases/download/app-v0.0.2/loothound_0.0.2_amd64.deb">Linux (.deb)</a></li>
+                <li><a href="https://github.com/Loothound/Loothound/releases/download/app-v0.0.2/loothound_0.0.2_x64.dmg">MacOS</a></li>
+            </ul>
+        </section>
+    </div>
+</body>
+</html>

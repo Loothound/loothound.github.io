@@ -1,0 +1,111 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Card from "../components/Card.astro";
+import { Octokit } from "octokit";
+
+const octokit = new Octokit({});
+const req = await octokit.request("GET /repos/{owner}/{repo}/releases", {
+  owner: "Loothound",
+  repo: "Loothound",
+  headers: {
+    "X-GitHub-Api-Version": "2022-11-28",
+  },
+});
+
+const latestReleaseAssets = req.data[0].assets;
+
+const windowsUrl = latestReleaseAssets.find((link) =>
+  link.browser_download_url.endsWith(".msi")
+).browser_download_url;
+const appImageUrl = latestReleaseAssets.find((link) =>
+  link.browser_download_url.endsWith(".AppImage")
+).browser_download_url;
+const debUrl = latestReleaseAssets.find((link) =>
+  link.browser_download_url.endsWith(".deb")
+).browser_download_url;
+const macUrl = latestReleaseAssets.find((link) =>
+  link.browser_download_url.endsWith(".dmg")
+).browser_download_url;
+---
+
+<Layout title="Loothound">
+  <main id="container">
+    <img id="logo" src="/logo.svg" width="200" height="200" />
+    <section>
+      <h1>Loothound</h1>
+    </section>
+    <section>
+      <h2>About</h2>
+      <p>
+        Loothound is a new tool for Path of Exile with the intention of
+        replicating some of the functionality of other tools like Exilence Next
+        and PoE Stack. Currently this mainly encompasses the ability to
+        selectively fetch all the items inside certain stash tabs of your choice
+        and automatically checking everything against <a
+          href="https://poe.ninja">poe.ninja</a
+        > to get an overall grasp on the combined net worth of your loot.
+      </p>
+    </section>
+    <section id="download-section">
+      <h2>Downloads</h2>
+      <div id="download-grid">
+        <Card title="Windows" href={windowsUrl} img="/windows.svg" />
+        <Card title="Linux (AppImage)" href={appImageUrl} img="/linux.svg" />
+        <Card title="Linux (.deb)" href={debUrl} img="/linux.svg" />
+        <Card title="MacOS" href={macUrl} img="/apple.svg" />
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  main {
+    margin: auto;
+    padding: 1rem;
+    width: 1000px;
+    max-width: calc(100% - 2rem);
+    color: white;
+    font-size: 20px;
+    line-height: 1.6;
+  }
+  #logo {
+    width: auto;
+    height: 15vh;
+    background-color: #ec3c3c;
+    border-color: #ec3c3c;
+    border-style: solid;
+    border-radius: 100%;
+    border-width: 2px;
+  }
+  #container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10vh;
+    align-items: center;
+  }
+  #download-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    gap: 24px;
+  }
+  #download-section {
+    width: 100%;
+  }
+  h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+  }
+  a,
+  a:visited {
+    color: #ec3c3c;
+    text-decoration: none;
+  }
+
+  a:hover {
+    color: #e26161;
+  }
+</style>
